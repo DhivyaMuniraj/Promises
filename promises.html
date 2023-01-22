@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Promises Async Await</h1>
+    <h2>Promise Methods - Any - AllSettled - All</h2>
+    
+</body>
+<script>
+
+
+const promise_password= new Promise((resolve,reject)=>{
+    let password=23;
+    if(password===23){
+        resolve("Got the correct input please enter the name")
+    }
+    else{
+        reject("Got the incorrect input")
+    }
+})
+const promise_name=new Promise((resolve,reject)=>{
+    let name="dhi";
+    if(name==="dhivya"){
+        resolve("Got the correct name here is your balance");
+    }
+    else{
+        reject("Got the incorrect input")
+    }
+})
+
+// then menthod
+
+
+// promise_password.then((value)=>{
+//     console.log(value) 
+//     promise_name.then((value)=>{
+//         console.log(value,"\n The total amount is 1200");
+//     }).catch((value)=>{
+//         console.log(value);
+//     })
+// }).catch((value)=>{
+//     console.log(value)
+// })
+
+//async await
+
+// const promises_result=async()=>{
+//  const res_password=await promise_password.catch()
+//  console.log(res_password);
+//  const res_name=await promise_name.catch()
+//  console.log(res_name,"The total amount is 1200");
+// }
+
+// promises_result();
+
+    Promise.all([promise_password, promise_name]).then(function(values) {
+        console.log(values);
+    });
+    Promise.allSettled([promise_password, promise_name]).then(function(values) {
+        console.log(values,"\n The total amount is 1200","--allSettled");
+    });
+    Promise.any([promise_password, promise_name]).then(function(values) {
+        console.log(values,"\n The total amount is 1700","--any");
+    });
+</script>
+</html>
